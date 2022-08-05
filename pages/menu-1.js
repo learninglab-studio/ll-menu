@@ -6,8 +6,8 @@ const MyList = () => {
     return (
         <ul>
                 {myListOfStuff.map(
-                    e => {return (
-                        <li>{e}</li>
+                    (e, i) => {return (
+                        <li key={i}>{e}</li>
                     )}
                 )}
             </ul>
