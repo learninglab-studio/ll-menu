@@ -1,3 +1,7 @@
+.projectTitle {
+    font-size: 4em;
+}
+
 .projectCard {
     width: 100%;
     padding: 20px;
@@ -12,5 +16,6 @@
         border-color: black;
         font-size: 8px;
         width: 100%;
+        page-break-inside: avoid;
     }
 }

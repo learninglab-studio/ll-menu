@@ -1,4 +1,5 @@
 import ActionCard from "./action-card"
+import Stringify from "./stringify"
 
 module.exports = function ActionList(props) {
     return (
@@ -7,10 +8,11 @@ module.exports = function ActionList(props) {
                 {props.actions.map((action, i) => {
                     return (
                         <div key={i} >
-                            <ActionCard text={action.linkText} />
+                            <ActionCard action={action} />
                         </div>
                     )
                 })}
+            <Stringify object={props} />
         </div>
     )
 }
