@@ -1,0 +1,16 @@
+.eventCard {
+    width: 350px;
+    padding: 10px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+@media print {
+    .eventCard {
+        border-color: black;
+        font-size: 8px;
+        width: 100%;
+    }
+}
