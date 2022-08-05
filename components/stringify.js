@@ -1,4 +1,4 @@
-export default ({object}) => {
+export default function Stringify ({object}) {
     return (
         <div style={{width: "70%", margin: "auto", color: "white"}}>
             <pre>
