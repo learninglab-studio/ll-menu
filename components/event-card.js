@@ -1,10 +1,11 @@
 import { getStaticProps } from "../pages/weekly-doc";
 import styles from "./event-card.module.css"
 
-export default function EventCard({text}) {
+export default function EventCard({event}) {
     return (
         <div className={styles.EventCard}>
-            {text}
+            <pre>{JSON.stringify(event, null, 4)}</pre>
+            
         </div>   
     )
          

@@ -7,16 +7,7 @@ import ActionList from '../components/action-list';
 import ProjectList from '../components/project-list';
 import MicroprojectList from '../components/microproject-list';
 import EventList from '../components/event-list';
-
-const CodeBlock = ({code}) => {
-    return (
-        <div style={{width: "70%", margin: "auto", color: "white"}}>
-            <pre>
-                {code}
-            </pre>
-        </div>
-    )
-}
+import Stringify from '../components/stringify';
 
 export async function getStaticProps() {
     const allActions = await getActions();
@@ -31,13 +22,14 @@ export async function getStaticProps() {
             slug: `/actions/${e.id}`,
         }
     })
-    const theProjects = JSON.parse(JSON.stringify(allProjects))
+    console.log(`getting events`)
+    console.log(JSON.stringify(allEvents))
     return {
         props: {
             actions: theActions,
-            events: JSON.stringify(allEvents, null, 4),
-            microprojects: JSON.stringify(allMicroprojects, null, 4),
-            projects: theProjects
+            events: JSON.parse(JSON.stringify(allEvents)),
+            microprojects: JSON.parse(JSON.stringify(allMicroprojects)),
+            projects: JSON.parse(JSON.stringify(allProjects))
         },
     };
 }
@@ -53,14 +45,12 @@ export default function Week(props) {
                 </h1>
                 <p>all the things happening this week</p>
                 <ProjectList projects={props.projects} />
-                <h2>Microprojects</h2>
-                <h2>Events</h2>
+                <MicroprojectList microprojects={props.microprojects} />
+                <EventList events={props.events} />
                 <ActionList actions={props.actions} />
-                <CodeBlock code={props.events} />
-                <CodeBlock code={props.microprojects} />
+                <Stringify object={props.events} />
+                <Stringify object={props.microprojects} />
                 
-                
-
             </main>
         </div>
     )
