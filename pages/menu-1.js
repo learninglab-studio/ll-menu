@@ -1,6 +1,8 @@
 
 const myName = "Marlon"
 const myListOfStuff = ["camera", "lens", "tripod", "camera bag",]
+const text = `${myName}'s Stuff`
+
 
 const MyList = () => {
     return (
@@ -18,7 +20,7 @@ export default function Menu() {
     return (
         <div>
             <h1>the Menu</h1>
-            <h3>{myName}'s Stuff</h3>
+            <h3>{text}</h3>
             <MyList></MyList>
         </div>
     )
