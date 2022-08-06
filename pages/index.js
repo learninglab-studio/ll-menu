@@ -15,7 +15,7 @@ export async function getStaticProps() {
       slug: `/actions/${e.id}`,
     }
   })
-  console.log(allActionsString)
+  // console.log(allActionsString)
   return {
     props: {
       actions: theActions, 

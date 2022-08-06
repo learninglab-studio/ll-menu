@@ -15,7 +15,7 @@ export async function getStaticProps() {
     const allProjects = await getProjects();
     const allMicroprojects = await getMicroprojects();
     console.log(`getting events`)
-    console.log(JSON.stringify(allEvents))
+    // console.log(JSON.stringify(allEvents))
     return {
         props: {
             actions: JSON.parse(JSON.stringify(allActions)),
