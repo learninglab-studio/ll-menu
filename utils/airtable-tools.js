@@ -49,6 +49,6 @@ module.exports.findMany = async ({ baseId, table, view }) => {
       //   // return(theRecords);
       // })
       .catch(err=>{console.error(err); return})
-    console.log(JSON.stringify(theRecords, null, 4))
+    // console.log(JSON.stringify(theRecords, null, 4))
     return theRecords;
 }
