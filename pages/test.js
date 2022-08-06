@@ -1,5 +1,3 @@
-import CopyToClipboard from "react-copy-to-clipboard";
-import CopyButton from "../components/buttons/copy-button"
 import BigCopyButton from "../components/buttons/big-copy-button";
 
 export default function Test(){
@@ -10,11 +8,9 @@ export default function Test(){
                 fontSize: "60px",
                 fontWeight: "900"
             }}>test</h1>
-            <button style={{fontWeight: "900"}}>word</button>
-            <pre>{markdown}</pre>
-            <CopyButton text={markdown} />
-            <p>and the big one</p>
+            
             <BigCopyButton text={`bigger markdown: ${markdown}`} />
+            
         </div>
 
     )

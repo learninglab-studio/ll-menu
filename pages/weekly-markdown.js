@@ -4,6 +4,7 @@ import { getActions, getEvents, getProjects, getMicroprojects, getShoots } from 
 import Stringify from '../components/stringify';
 import Spacer from '../components/utilities/spacer';
 import generateWeeklyMarkdown from '../utils/generate-weekly-markdown'
+import Draggable from "react-draggable";
 
 const TheMarkdownCode = (props) => {
     return (
@@ -14,7 +15,6 @@ const TheMarkdownCode = (props) => {
 }
 
 export default function WeeklyMarkdown(props){
-    let markdown = `#your markdown\n\nwould go here.\n- test1\n- test2\n- test3`;
     return (
         <div className={styles.container}>
             <main className={styles.main}>
@@ -22,7 +22,11 @@ export default function WeeklyMarkdown(props){
                     weekly markdown
                 </h1>
                 <Spacer height="50" />
-                <BigCopyButton text={props.markdown} />
+                <Draggable>
+                    <div>
+                        <BigCopyButton text={props.markdown} />
+                    </div>
+                </Draggable>
             </main>
             <TheMarkdownCode markdown={props.markdown}></TheMarkdownCode>
         </div>
