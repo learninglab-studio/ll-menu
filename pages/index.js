@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import getAirtableActions from '../utils/get-airtable-actions'
+import { getActions, getEvents, getProjects, getMicroprojects } from '../utils/get-weekly-data';
+
 
 export async function getStaticProps() {
-  const allActions = await getAirtableActions();
+  const allActions = await getActions();
   const allActionsString = JSON.stringify(allActions, null, 4)
   const theActions = allActions.map(e=>{
     return {
@@ -29,17 +30,17 @@ export default function Home(props) {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          The Menu
+          the menu
         </h1>
         {props.actions.map((action, i)=>{return(
           <div key={i} style={{
             width: "300px",
             padding: "20px",
             borderStyle: "solid",
-            borderWidth: "1px",
-            borderColor: "white",
-            borderRadius: "10px",
-            margin: "8px",
+            borderWidth: ".5px",
+            // borderColor: "white",
+            borderRadius: "5px",
+            // margin: "8px",
             textAlign: "center"
           }}
           >{action.linkText}</div>
