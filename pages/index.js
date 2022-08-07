@@ -51,5 +51,6 @@ export async function getStaticProps() {
         props: {
             markdown: TheMarkdown,
         },
+        revalidate: 10
     };
 }
