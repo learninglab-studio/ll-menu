@@ -1,55 +1,55 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import BigCopyButton from "../components/buttons/big-copy-button";
 import styles from '../styles/Home.module.css'
-import { getActions, getEvents, getProjects, getMicroprojects } from '../utils/get-weekly-data';
+import { getActions, getEvents, getProjects, getMicroprojects, getShoots } from '../utils/get-weekly-data';
+import Stringify from '../components/stringify';
+import Spacer from '../components/utilities/spacer';
+import generateWeeklyMarkdown from '../utils/generate-weekly-markdown'
+import Draggable from "react-draggable";
 
-
-export async function getStaticProps() {
-  const allActions = await getActions();
-  const allActionsString = JSON.stringify(allActions, null, 4)
-  const theActions = allActions.map(e=>{
-    return {
-      id: e.id,
-      linkText: e.fields.Name,
-      assignedTo: e.fields.AssignedTo_Name, 
-      slug: `/actions/${e.id}`,
-    }
-  })
-  // console.log(allActionsString)
-  return {
-    props: {
-      actions: theActions, 
-      allActionsString
-    },
-  };
+const TheMarkdownCode = (props) => {
+    return (
+        <><div>the markdown if you want to see it</div>
+        <div><pre>{props.markdown}</pre></div></>
+        
+    )
 }
 
+export default function WeeklyMarkdown(props){
+    return (
+        <div className={styles.container}>
+            <main className={styles.main}>
+                <h1 className={styles.title}>
+                    the menu
+                </h1>
+                <Spacer height="50" />
+                <Draggable>
+                    <div>
+                        <BigCopyButton text={props.markdown} />
+                    </div>
+                </Draggable>
+            </main>
+            <TheMarkdownCode markdown={props.markdown}></TheMarkdownCode>
+        </div>
+    )
+}
 
-export default function Home(props) {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          the menu
-        </h1>
-        {props.actions.map((action, i)=>{return(
-          <div key={i} style={{
-            width: "300px",
-            padding: "20px",
-            borderStyle: "solid",
-            borderWidth: ".5px",
-            // borderColor: "white",
-            borderRadius: "5px",
-            // margin: "8px",
-            textAlign: "center"
-          }}
-          >{action.linkText}</div>
-        )})}
-        
-
-        <div></div>
-        <h3>done</h3>
-      </main>
-    </div>
-  )
+export async function getStaticProps() {
+    const allActions = await getActions();
+    const allEvents = await getEvents();
+    const allProjects = await getProjects();
+    const allMicroprojects = await getMicroprojects();
+    const allShoots = await getShoots();
+    const TheMarkdown = await generateWeeklyMarkdown({
+        actions: allActions,
+        events: allEvents,
+        shoots: allShoots,
+        microprojects: allMicroprojects,
+        projects: allProjects
+    })
+    
+    return {
+        props: {
+            markdown: TheMarkdown,
+        },
+    };
 }
