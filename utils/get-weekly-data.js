@@ -13,7 +13,7 @@ module.exports.getEvents = async () => {
     const records = await airtableTools.findMany({
         baseId: process.env.AIRTABLE_22_23_WORK_BASE,
         table: "ll-plan",
-        view: "NEXT_TWO_WEEKS"
+        view: "THE_MENU"
     })
     return records
 }
@@ -22,7 +22,7 @@ module.exports.getShoots = async () => {
     const records = await airtableTools.findMany({
         baseId: process.env.AIRTABLE_22_23_WORK_BASE,
         table: "ll-shoots",
-        view: "NEXT_TWO_WEEKS"
+        view: "THE_MENU"
     })
     return records
 }
