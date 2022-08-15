@@ -8,7 +8,12 @@ module.exports = function ActionList(props) {
                 {props.actions.map((action, i) => {
                     return (
                         <div key={i} >
-                            <ActionCard action={action} />
+                            <ActionCard 
+                                name={action.fields.Name} 
+                                notes={action.fields.Notes} 
+                                assignedTo={action.fields.AssignedTo_Name.toString()} 
+                                temporalStatus={action.fields.TemporalStatus}
+                            />
                         </div>
                     )
                 })}

@@ -7,7 +7,7 @@ const Airtable = require('airtable')
 
 module.exports.findRecordByValue = async ({ baseId, table, field, value, view }) => {
     var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(baseId);
-    theRecords = [];
+    let theRecords = [];
     await base(table).select({
         maxRecords: 1,
         view: view ? view : "Grid view",
@@ -51,4 +51,23 @@ module.exports.findMany = async ({ baseId, table, view }) => {
       .catch(err=>{console.error(err); return})
     // console.log(JSON.stringify(theRecords, null, 4))
     return theRecords;
+}
+
+module.exports.findManyByValue = async ({ baseId, table, field, value, view }) => {
+  var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(baseId);
+  let theRecords = [];
+  await base(table).select({
+      maxRecords: 100,
+      view: view ? view : "Grid view",
+      filterByFormula: `${field}='${value}'`
+  }).eachPage(function page(records, next){
+      theRecords.push(...records);
+      next()
+    })
+    // .then(()=>{
+    //   // return(theRecords);
+    // })
+    .catch(err=>{console.error(err); return})
+  console.log(JSON.stringify(theRecords))
+  return theRecords;
 }
