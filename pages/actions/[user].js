@@ -27,7 +27,8 @@ const getAllUserPaths = async function() {
 
 
 export default function Post({ userData }) {
-  return <Layout>
+  if (userData.fields.ActionsToDo && userData.fields.ActionsToDo.length > 0) {
+    return <Layout>
       <h1>{userData.fields.ActionsToDo.length} actions for {userData.fields.Name}.</h1>
       <ul>
         {userData.fields.ActionsToDo.map((e, i)=>{return (
@@ -49,6 +50,12 @@ export default function Post({ userData }) {
       </div>
       <Stringify object={userData} />
   </Layout>;
+  } else {
+    return <Layout>
+      <h1>No actions for {userData.fields.Name}.</h1>
+    </Layout>
+  }
+  
 }
 
 export async function getStaticPaths() {
@@ -70,5 +77,5 @@ export async function getStaticProps({ params }) {
       userData: JSON.parse(JSON.stringify(userData))
     }
   }
-  // Fetch necessary data for the blog post using params.id
+  // Fetc h necessary data for the blog post using params.id
 }
