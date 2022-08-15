@@ -38,6 +38,7 @@ export default function Post({ userData }) {
         {userData.fields.ActionsToDo.map((e, i) => {
           return (
             <ActionCard 
+              key={i}
               name={userData.fields.ActionsToDo_Name[i]}
               notes={userData.fields.ActionsToDo_Notes[i]}
               temporalStatus={userData.fields.ActionsToDo_TemporalStatus[i]}
