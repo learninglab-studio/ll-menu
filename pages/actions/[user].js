@@ -1,9 +1,9 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/layout/layout';
 import getUserRecordFromSlug from '../../utils/get-user-record-from-slug';
 import getUsers from '../../utils/get-users';
-import Stringify from '../../components/stringify'
+import Stringify from '../../components/utilities/stringify'
 import llog from '../../utils/ll-loggers'
-import ActionCard from '../../components/action-card';
+import ActionCard from '../../components/airtable-records/action-card';
 
 const getAllUserPaths = async function() {
   llog.magenta(`starting getAllUserPaths`)

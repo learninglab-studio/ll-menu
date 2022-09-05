@@ -1,5 +1,5 @@
 import EventCard from "./event-card"
-import CodeBlock from "./code-block"
+import CodeBlock from "../utilities/code-block"
 
 export default function EventList(props) {
     return (

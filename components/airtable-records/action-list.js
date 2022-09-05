@@ -1,5 +1,5 @@
 import ActionCard from "./action-card"
-import Stringify from "./stringify"
+import Stringify from "../utilities/stringify"
 
 module.exports = function ActionList(props) {
     return (
@@ -17,7 +17,6 @@ module.exports = function ActionList(props) {
                         </div>
                     )
                 })}
-            <Stringify object={props} />
         </div>
     )
 }

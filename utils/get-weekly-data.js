@@ -21,7 +21,7 @@ module.exports.getEvents = async () => {
 module.exports.getShoots = async () => {
     const records = await airtableTools.findMany({
         baseId: process.env.AIRTABLE_22_23_WORK_BASE,
-        table: "ll-shoots",
+        table: "ll-media-plan",
         view: "THE_MENU"
     })
     return records

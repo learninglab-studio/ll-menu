@@ -22,4 +22,7 @@ export default {
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  images: {
+    domains: ['files.slack.com'],
+  },
 };

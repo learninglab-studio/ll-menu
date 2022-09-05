@@ -1,6 +1,5 @@
-import { getStaticProps } from "../pages/weekly-doc";
 import styles from "./action-card.module.css"
-import Stringify from "./stringify"
+import Stringify from "../utilities/stringify"
 
 export default function ActionCard({name, notes, assignedTo, temporalStatus}) {
     return (
