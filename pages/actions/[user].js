@@ -75,7 +75,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       userData: JSON.parse(JSON.stringify(userData))
-    }
+    },
+    revalidate: 10
   }
   // Fetc h necessary data for the blog post using params.id
 }
