@@ -1,5 +1,13 @@
 const airtableTools = require('./airtable-tools')
 
+const cleanEvents = async (records) => {
+    const cleanEvents = []
+    for (let i = 0; i < records.length; i++) {
+        const element = records[i];
+        // cleanEvents.push({...records, })
+    }
+}
+
 module.exports.getActions = async () => {
     const records = await airtableTools.findMany({
         baseId: process.env.AIRTABLE_22_23_WORK_BASE,
