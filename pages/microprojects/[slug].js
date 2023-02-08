@@ -41,7 +41,6 @@ export default function TheMicroprojects({ microprojectData }) {
       <h1>No info on {microprojectData.id}.</h1>
     </Layout>
   }
-  
 }
 
 export async function getStaticPaths() {
@@ -61,7 +60,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
         microprojectData: JSON.parse(JSON.stringify(microprojectData))
-    }
+    },
+    revalidate: 10
   }
   // Fetc h necessary data for the blog post using params.id
 }
